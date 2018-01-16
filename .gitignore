@@ -4,3 +4,6 @@ out
 *.iml
 test-output
 logs
+build
+gradle
+.gradle

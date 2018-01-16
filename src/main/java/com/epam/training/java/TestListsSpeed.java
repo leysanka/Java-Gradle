@@ -70,10 +70,10 @@ public class TestListsSpeed {
 
 //        String[] strings = createStringArray(1000000);
 
-        String[] strings = new String[1000000];
-        Arrays.fill(strings, 0,5000, "hello");
-        Arrays.fill(strings, 5000, strings.length, "buy");
-        System.out.println(strings[0] + " & " + strings[1000000-1]);
+        String[] strings = new String[1_000_000];
+        Arrays.fill(strings, 0,5_000, "hello");
+        Arrays.fill(strings, 5_000, strings.length, "buy");
+        System.out.println(strings[0] + " & " + strings[1_000_000-1]);
 
         List<String> arrayList = new ArrayList<>(Arrays.asList(strings));
         ArrayList<String> arrList = new ArrayList<>(Arrays.asList(strings));
@@ -89,6 +89,8 @@ public class TestListsSpeed {
         long bc = System.currentTimeMillis();
         System.out.println(bc-ab + " Array");
         System.out.println(strings[0] + " & " + strings[strings.length-1]);
+
+
         /**
          * Test get last and remove with ArrayList vs LinkedList
          *

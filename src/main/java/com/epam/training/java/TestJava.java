@@ -1,12 +1,13 @@
 package com.epam.training.java;
 
+import javafx.util.Pair;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 
 public abstract class TestJava {
     public String test = "aa bb";
-
 
     public abstract int test();
 
@@ -15,6 +16,11 @@ public abstract class TestJava {
     }
 
     public static void main(String[] args) {
+
+        String st = "abd";
+        st.replace("b", "d"); //not changed
+        st = st.replace("b", "d"); //changed
+        System.out.println(st);
 
         Boolean bl = new Boolean(null);
         System.out.println(bl);
@@ -45,16 +51,21 @@ public abstract class TestJava {
             }
             System.out.print("C");
         }
+
+        /**/
         Integer i1 = 127;
         Integer i2 = 127;
         System.out.println(i1 == i2);
-        System.out.println(i1 == 128);
+        System.out.println(i1 == -128);
+        System.out.println(i1.hashCode() + " + " + i2.hashCode());
+        System.out.println(System.identityHashCode(i1)); //не переопределенный native hashcode
+        System.out.println(System.identityHashCode(i2));
 
         String s1 = "ab";
         String s2 = "ab";
 
         System.out.println(s1 == s2);
-        System.out.println(s1 == "a");
+        System.out.println(s1 == "ab");
        /* TestClass2 testClass2 = new TestClass2();
         TestClass2.setHello(6);
         System.out.println(TestClass2.hello);*/
@@ -141,9 +152,41 @@ public abstract class TestJava {
 
       //  System.out.println(7/-4 + "  Остаток");
 
+
+        System.out.println(010); //octal integer
+        System.out.println(0x10);//16ричный int
+/*
+* byte and short -> арифмитические операции возвр int*/
+        byte bb;
+        byte bb1 = 1;
+        byte bb2 = 1;
+//        bb = bb1 + bb2; //error due to gets int after summing
+        bb = (byte)(bb1 + bb2);
+
+        int x = 0b100;
+        System.out.println("x " + x);
+
+        Integer integer = 255;
+        System.out.println("Int to byte " + integer.byteValue());
+
+        double positive_infinity = 12.0 / 0;
+        double negative_infinity = -15.0 / 0;
+        System.out.println(String.valueOf(positive_infinity));
+        System.out.println(String.valueOf(positive_infinity+negative_infinity));
+        char ch1;
+        ch1 = 225;
+        System.out.println("ch1 содержит " + (int)(ch1));
+        ch1++; // увеличим на единицу
+        System.out.println("ch1 содержит " + ch1);
+        ch1++; // увеличим на единицу
+        System.out.println("ch1 содержит " + ch1);
+
+
+        int[][] c = {{1,2,3}, {4,5,6,7},};
+        System.out.println(Arrays.deepToString(c));
+
         int[] a = {1,2,3};
         int[] b = {6,9,3};
-
         List<Integer> aI = Arrays.stream(a).boxed().collect(Collectors.toList());
         List<Integer> bI = Arrays.stream(b).boxed().collect(Collectors.toList());
         aI.addAll(bI);
@@ -151,7 +194,6 @@ public abstract class TestJava {
         aI.sort(Comparator.naturalOrder());
 
         System.out.println("AI" + aI);
-
 
         Collection<String> strColl = new ArrayList<>(Arrays.asList("111", "444", "111", null));
         System.out.println(strColl);
@@ -223,6 +265,11 @@ public abstract class TestJava {
 
         //int a = tryFinallyTest(list);
        /* System.out.println("This is a: " + tryFinallyTest(list));*/
+
+        Pair<Integer, String > pair = new Pair<Integer, String>(1, "abc");
+        System.out.println(pair.getKey());
+        System.out.println(getMaxValue(3.2, 5, 1000));
+        System.out.println(getMaxValue(new double[]{1, 2, 3}));
     }
 
     public static  <T> Collection<T> symmetricIntersection(Collection<T> a, Collection<T> b) {
@@ -241,6 +288,16 @@ public abstract class TestJava {
         Collection<T> union = new ArrayList<>(a);
         union.addAll(b);
         return union;
+    }
+
+    public static double getMaxValue(double... values) {
+        double largest = Double.MIN_VALUE;
+        for(double v : values) {
+            if (v > largest) {
+                largest = v;
+            }
+        }
+        return largest;
     }
 
     public Object M1(Object a) {
