@@ -7,25 +7,39 @@ import java.util.stream.Collectors;
 
 
 public abstract class TestJava {
-    public String test = "aa bb";
+   public String test = "aa bb";
 
-    public abstract int test();
+
+        public abstract int test();
 
     public static void main() {
         System.out.print("Б");
     }
 
-    public static void main(String[] args) {
+    public static <T> T getSomething(T... a){
+        return a[0];
+    }
 
-        String st = "abd";
+    public static void main(String[] args) throws ClassNotFoundException {
+
+/*        StringBuilder sb = new StringBuilder("hello");
+        System.out.println(sb.length());
+        System.out.println(sb.capacity());
+        sb.reverse();
+        sb.trimToSize();
+//        sb.ensureCapacity(Integer.MAX_VALUE);
+//        sb.setLength(2);
+        System.out.println("new length " + sb.length() + ", string " + sb.toString() + ", capactity " + sb.capacity());*/
+
+       /* String st = "abd";
         st.replace("b", "d"); //not changed
         st = st.replace("b", "d"); //changed
-        System.out.println(st);
+        System.out.println(st);*/
 
-        Boolean bl = new Boolean(null);
-        System.out.println(bl);
-        main();
-        int var = 1;
+       /* Boolean bl = new Boolean(null);
+        System.out.println(bl);*/
+       /* main();*/
+/*        int var = 1;
         System.out.println("Переменная var (постфиксный инкремент): " + var++);
         System.out.println("Переменная var (префиксный инкремент): " + ++var);
         System.out.println(var);
@@ -35,7 +49,7 @@ public abstract class TestJava {
             System.out.println("Переменные равны");}
         else{
             System.out.println("Переменные не равны");
-    }
+    }*/
 
 
     big_loop:
@@ -63,7 +77,6 @@ public abstract class TestJava {
 
         String s1 = "ab";
         String s2 = "ab";
-
         System.out.println(s1 == s2);
         System.out.println(s1 == "ab");
        /* TestClass2 testClass2 = new TestClass2();
@@ -188,8 +201,9 @@ public abstract class TestJava {
         int[] a = {1,2,3};
         int[] b = {6,9,3};
         List<Integer> aI = Arrays.stream(a).boxed().collect(Collectors.toList());
+       // List<Integer> aI = Arrays.asList(1,2,3); //208
         List<Integer> bI = Arrays.stream(b).boxed().collect(Collectors.toList());
-        aI.addAll(bI);
+        aI.addAll(bI); //Exception will be there if aI is as of 208
         //aI.retainAll(bI);
         aI.sort(Comparator.naturalOrder());
 
@@ -200,32 +214,37 @@ public abstract class TestJava {
         strColl.removeAll(Collections.singleton(null));
         /*Convert list to String array*/
         String[] s = strColl.toArray(new String[0]);
+
         /*Convert list to Integer array*/
         Integer[] i = strColl.stream().mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
         int[] ints = strColl.stream().mapToInt(Integer::parseInt).toArray();
 
-
         System.out.println(strColl);
+
         /*Printing arrays via stream: String[], Integer[], int[] */
         System.out.println(Arrays.stream(s).collect(Collectors.toList()));
         System.out.println(Arrays.stream(i).collect(Collectors.toList()));
         System.out.println(Arrays.stream(ints).boxed().collect(Collectors.toList()));
 
 
-/*        HashSet hashSetAB = new HashSet(aI);
+   /*     HashSet hashSetAB = new HashSet(aI);
         System.out.println("HashSetAB" + hashSetAB.toString());
         System.out.println("TreeSet" + new TreeSet<>(aI));
+*/
 
         Collection<String> listStr1 = Arrays.asList("a", "b", "c", "c");
         Collection<String> listStr2 = Arrays.asList("a", "b", "c", "c");
         Collection<Integer> listStr3 = Arrays.asList(1,2,3);
-        Collection<String> listStrUnion = symmetricUnion(listStr1, listStr2);
-        HashSet set = new HashSet<>(listStrUnion);
-        System.out.println("Set" + set.toString());*/
-       // Collection<Object> listDiffrUnion = objUnion(listStr1, listStr3);
-       /* System.out.println("Union" + listStrUnion.toString());
 
-        System.out.println("Intersection" + symmetricIntersection(listStr1, listStr2));*/
+      //  listStr1.addAll(listStr2); //Throws exception because Arrays.asList creates unmodifiable collection.
+        Collection<String> listStrUnion = symmetricUnion(listStr1, listStr2);
+
+        HashSet set = new HashSet<>(listStrUnion);
+        System.out.println("Set" + set.toString());
+       // Collection<Object> listDiffrUnion = objUnion(listStr1, listStr3);
+        System.out.println("Union" + listStrUnion.toString());
+
+        System.out.println("Intersection" + symmetricIntersection(listStr1, listStr2));
        // System.out.println(listDiffrUnion.toString());
 
 
