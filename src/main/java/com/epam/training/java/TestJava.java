@@ -10,7 +10,7 @@ public abstract class TestJava {
    public String test = "aa bb";
 
 
-        public abstract int test();
+    public abstract int test();
 
     public static void main() {
         System.out.print("Б");
@@ -22,6 +22,7 @@ public abstract class TestJava {
 
 
     public static void main(String[] args) throws ClassNotFoundException, InterruptedException {
+
 
 
 /*        StringBuilder sb = new StringBuilder("hello");
@@ -250,20 +251,22 @@ public abstract class TestJava {
        // System.out.println(listDiffrUnion.toString());
 
 
-/*        String s;
+       // String s;
 
         Map map = new HashMap();
+        map.put(set,listStr1.size());
         map.put(set,listStr1);
         map.put(set.toArray()[1],listStr1);
         map.put(set.toArray()[2],listStr2);
+        System.out.println("Printing map: ");
         map.entrySet().forEach(o -> System.out.println(o));
-
+        System.out.println("End Printing map");
 
         HashSet<Map.Entry<String,String>> hashSet = new HashSet<>();
         hashSet.add(new AbstractMap.SimpleEntry("a", "b"));
         hashSet.add(new AbstractMap.SimpleEntry("a", "d"));
         hashSet.add(new AbstractMap.SimpleEntry("c", "d"));
-        System.out.println("HashSet" + hashSet);*/
+        System.out.println("HashSet" + hashSet);
 
 
  /*       Map fromHashSet = new HashMap(hashSet.size());
