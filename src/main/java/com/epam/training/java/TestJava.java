@@ -20,7 +20,9 @@ public abstract class TestJava {
         return a[0];
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
+
+    public static void main(String[] args) throws ClassNotFoundException, InterruptedException {
+
 
 /*        StringBuilder sb = new StringBuilder("hello");
         System.out.println(sb.length());
@@ -344,3 +346,5 @@ public abstract class TestJava {
     }*/
 
 }
+
+

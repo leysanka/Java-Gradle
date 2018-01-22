@@ -170,10 +170,12 @@ public class TestListsSpeed {
         System.out.println("ArrayList Set middle index " + calcSpeedOfListOperations(arrList, Operations.SET));
         System.out.println("LinkedList Set middle index " + calcSpeedOfListOperations(lnkList, Operations.SET));
 
+
         /**
          * Test Lists Iteration speed
          * LinkedList is faster when adding/updating a sequential list of objects
          * */
+
         arrList = new ArrayList<>(Arrays.asList(strings));
         lnkList = new LinkedList<>(Arrays.asList(strings));
         testSpeedWithListIterator(lnkList,"Iterate");
